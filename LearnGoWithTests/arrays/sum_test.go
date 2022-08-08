@@ -27,3 +27,18 @@ func TestSum(t *testing.T) {
 	})
 
 }
+
+func TestSumAll(t *testing.T) {
+	got := SumAll([]int{1, 2, 3, 4}, []int{6, 7})
+	want := []int{10, 13}
+
+	if len(got) != len(want) {
+		t.Errorf("got %v, want %v are not in equal size", got, want)
+	}
+
+	for i := 0; i < len(got); i++ {
+		if got[i] != want[i] {
+			t.Errorf("got[%d] %d is != want[%d] %d", i, got[i], i, want[i])
+		}
+	}
+}
