@@ -1,10 +1,16 @@
 package iteration
 
-import "testing"
+import (
+	"testing"
+	"strings"
+)
+
+
+const testChar = "a"
 
 func TestRepeat(t *testing.T) {
-	got := Repeat("a")
-	want := "aaaaa"
+	got := Repeat(testChar, 8)
+	want := strings.Repeat(testChar, 8)
 
 	if got != want {
 		t.Errorf("got %q want %q", got, want)		
@@ -13,6 +19,6 @@ func TestRepeat(t *testing.T) {
 
 func BenchmarkRepeat(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Repeat("A")
+		Repeat(testChar, 5)
 	}
 }
