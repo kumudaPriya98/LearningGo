@@ -39,3 +39,12 @@ func TestSumAll(t *testing.T) {
 		t.Errorf("got %v, want %v are not in equal size", got, want)
 	}
 }
+
+func TestSumAllTails(t *testing.T) {
+	got := SumAllTails([]int{1, 2, 3, 4}, []int{6, 7}, []int{9}, []int{})
+	want := []int{9, 7, 0, 0}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v, want %v are not same", got, want)
+	}
+}
