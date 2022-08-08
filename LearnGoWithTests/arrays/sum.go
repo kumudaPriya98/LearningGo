@@ -18,10 +18,10 @@ func Sum5(numbers [5]int) (sum int) {
 	return
 }
 
-func SumAll(sliceOfNumbers ...[]int) (sums []int) {
-	sums = make([]int, len(sliceOfNumbers))
-	for iter, numbers := range sliceOfNumbers {
-		sums[iter] = Sum(numbers)
+func SumAll(sliceOfNumbers ...[]int) []int {
+	var sums []int
+	for _, numbers := range sliceOfNumbers {
+		sums = append(sums, Sum(numbers))
 	}
 	return sums
 }
