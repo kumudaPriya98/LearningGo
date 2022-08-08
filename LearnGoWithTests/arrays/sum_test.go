@@ -7,15 +7,20 @@ import (
 
 func TestSum(t *testing.T) {
 
+	checkEqualSum := func(t testing.TB, got, want int) {
+		t.Helper()
+
+		if got != want {
+			t.Errorf("got '%d' want '%d'", got, want)
+		}
+	}
+
 	t.Run("Test the Sum for Array of size 5", func(t *testing.T) {
 		numbers := [5]int{1, 2, 3, 4, 5}
 
 		got := Sum5(numbers)
 		want := 15
-
-		if got != want {
-			t.Errorf("got '%d' want '%d', Nums : %v", got, want, numbers)
-		}
+		checkEqualSum(t, got, want)
 	})
 
 	t.Run("Test the Sum for Slices", func(t *testing.T) {
@@ -23,10 +28,7 @@ func TestSum(t *testing.T) {
 
 		got := Sum(numbers)
 		want := 36
-
-		if got != want {
-			t.Errorf("got '%d' want '%d', Nums : %v", got, want, numbers)
-		}
+		checkEqualSum(t, got, want)
 	})
 
 }
