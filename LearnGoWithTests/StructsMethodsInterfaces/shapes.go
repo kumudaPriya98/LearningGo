@@ -1,6 +1,6 @@
 package main
 
-const pi = 3.14
+import "math"
 
 type Rectangle struct {
 	Width  float64
@@ -20,7 +20,7 @@ func (r Rectangle) Area() float64 {
 }
 
 func (c Circle) Area() float64 {
-	return pi * c.Radius * c.Radius
+	return math.Pi * c.Radius * c.Radius
 }
 
 func main() {}

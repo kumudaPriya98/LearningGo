@@ -22,7 +22,7 @@ func TestArea(t *testing.T) {
 		t.Helper()
 		got := shape.Area()
 		if got != want {
-			t.Errorf("got %.2f want %.2f", got, want)
+			t.Errorf("got %g want %g", got, want)
 		}
 	}
 
@@ -35,7 +35,7 @@ func TestArea(t *testing.T) {
 
 	t.Run("Area of Circle", func(t *testing.T) {
 		circle := Circle{10.0}
-		want := 314.0
+		want := 314.1592653589793
 
 		checkEqualArea(t, circle, want)
 	})
