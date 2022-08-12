@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "errors"
 
 type Bitcoin float64
 
@@ -13,12 +14,18 @@ func (b Bitcoin) String() string {
 }
 
 func (w *Wallet) Deposit(amount Bitcoin) {
-	fmt.Printf("address in Deposit is %v \n", &(w.balance))
 	w.balance += amount
 }
 
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if w.balance < amount {
+		return errors.New("Insufficient Funds")
+	}
+	w.balance -= amount
+	return nil
+}
+
 func (w *Wallet) Balance() Bitcoin {
-	fmt.Printf("address in Balance is %v \n", &(w.balance))
 	return w.balance
 }
 
