@@ -1,10 +1,9 @@
 package iteration
 
 import (
-	"testing"
 	"strings"
+	"testing"
 )
-
 
 const testChar = "a"
 
@@ -13,7 +12,7 @@ func TestRepeat(t *testing.T) {
 	want := strings.Repeat(testChar, 8)
 
 	if got != want {
-		t.Errorf("got %q want %q", got, want)		
+		t.Errorf("got %q want %q", got, want)
 	}
 }
 
