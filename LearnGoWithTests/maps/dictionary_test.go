@@ -3,8 +3,8 @@ package main
 import "testing"
 
 func TestSearch(t *testing.T) {
-	dictionary := map[string]string{"test": "Sample Value"}
-	assertStrings(t, Search(dictionary, "test"), "Sample Value")
+	dictionary := Dictionary{"test": "Sample Value"}
+	assertStrings(t, dictionary.Search("test"), "Sample Value")
 }
 
 func assertStrings(t testing.TB, got, want string) {
