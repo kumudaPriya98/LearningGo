@@ -53,6 +53,16 @@ func TestUpdate(t *testing.T) {
 	})
 }
 
+func TestDelete(t *testing.T) {
+	dictionary := Dictionary{"test": "Sample Value"}
+
+	dictionary.Delete("test")
+
+	got, err := dictionary.Search("test")
+	assertError(t, err, ErrNoKey)
+	assertStrings(t, got, "")
+}
+
 func assertValidSearch(t testing.TB, dictionary Dictionary, key, want string) {
 	t.Helper()
 

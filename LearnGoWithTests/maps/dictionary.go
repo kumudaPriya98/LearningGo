@@ -42,4 +42,12 @@ func (d Dictionary) Update(key string, value string) error {
 
 	return err
 }
+
+// Since deleting a Value which is already not present in Map
+// has no effect on the Map. We are complicating the API by
+// returning errors
+func (d Dictionary) Delete(key string) {
+	delete(d, key)
+}
+
 func main() {}
