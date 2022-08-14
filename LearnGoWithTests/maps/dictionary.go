@@ -4,13 +4,22 @@ import "errors"
 
 type Dictionary map[string]string
 
-var ErrNoKey = errors.New("Key not present")
+var (
+	ErrNoKey        = errors.New("Key not present")
+	ErrDuplicateKey = errors.New("Key already present")
+)
 
 // the change in the d will be reflected in the callee dictionary instance
 // As Map value is "pointer to a runtime.hmap" structure
 // When Add is called, the pointer is copied and modified
-func (d Dictionary) Add(key string, value string) {
+func (d Dictionary) Add(key string, value string) error {
+	_, errSearch := d.Search(key)
+
+	if errSearch != ErrNoKey {
+		return ErrDuplicateKey
+	}
 	d[key] = value
+	return nil
 }
 
 func (d Dictionary) Search(key string) (string, error) {
