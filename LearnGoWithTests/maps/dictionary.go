@@ -1,9 +1,17 @@
 package main
 
+import "errors"
+
 type Dictionary map[string]string
 
-func (d Dictionary) Search(key string) string {
-	return d[key]
+var ErrNoKey = errors.New("Key not present")
+
+func (d Dictionary) Search(key string) (string, error) {
+	value, found := d[key]
+	if !found {
+		return "", ErrNoKey
+	}
+	return value, nil
 }
 
 func main() {}
