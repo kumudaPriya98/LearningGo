@@ -15,11 +15,15 @@ var (
 func (d Dictionary) Add(key string, value string) error {
 	_, errSearch := d.Search(key)
 
-	if errSearch != ErrNoKey {
+	switch errSearch {
+	case ErrNoKey:
+		d[key] = value
+		return nil
+	case nil:
 		return ErrDuplicateKey
+	default:
+		return errSearch
 	}
-	d[key] = value
-	return nil
 }
 
 func (d Dictionary) Search(key string) (string, error) {
