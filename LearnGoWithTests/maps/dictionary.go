@@ -34,4 +34,12 @@ func (d Dictionary) Search(key string) (string, error) {
 	return value, nil
 }
 
+func (d Dictionary) Update(key string, value string) error {
+	_, err := d.Search(key)
+	if err == nil {
+		d[key] = value
+	}
+
+	return err
+}
 func main() {}

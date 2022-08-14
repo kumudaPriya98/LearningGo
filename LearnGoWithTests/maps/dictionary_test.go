@@ -36,6 +36,23 @@ func TestSearch(t *testing.T) {
 	})
 }
 
+func TestUpdate(t *testing.T) {
+	dictionary := Dictionary{"test": "Sample Value"}
+
+	t.Run("Update already present Key", func(t *testing.T) {
+		err := dictionary.Update("test", "Sample Value2")
+
+		assertNoError(t, err)
+		assertValidSearch(t, dictionary, "test", "Sample Value2")
+	})
+
+	t.Run("Update unkown Key", func(t *testing.T) {
+		err := dictionary.Update("test2", "Sample Value")
+
+		assertError(t, err, ErrNoKey)
+	})
+}
+
 func assertValidSearch(t testing.TB, dictionary Dictionary, key, want string) {
 	t.Helper()
 
